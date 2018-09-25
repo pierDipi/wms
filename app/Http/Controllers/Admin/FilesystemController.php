@@ -102,7 +102,7 @@ class FilesystemController extends Controller {
 
     public function upload(Request $request) {
         if(!$request->hasFile('file')) {
-            return abort(400, "Mieesing file");
+            return abort(400, "Missing file");
         }
         if (!$request->file('file')->isValid()) {
             return abort(400, "File not valid");
@@ -120,7 +120,7 @@ class FilesystemController extends Controller {
     public function destroy(Request $request) {
         $name = $request->input('name');
         if (empty($name)) {
-            return abort(400, "Mieesing file name");
+            return abort(400, "Missing file name");
         }
         $path = $request->input('path');
         $file = $this->getBasePath() . $path . $name;
